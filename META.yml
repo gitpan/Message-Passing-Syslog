@@ -1,0 +1,38 @@
+---
+abstract: 'input and output logstash messages from/to Syslog.'
+author:
+  - 'and COPYRIGHT'
+build_requires:
+  ExtUtils::MakeMaker: 6.36
+  Test::More: 0.88
+configure_requires:
+  ExtUtils::MakeMaker: 6.36
+distribution_type: module
+dynamic_config: 1
+generated_by: 'Module::Install version 1.06'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+module_name: Message::Passing::Syslog
+name: Message-Passing-Syslog
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  AnyEvent: 0
+  JSON: 0
+  JSON::XS: 0
+  Message::Passing: 0.002
+  Moose: 0
+  POE::Component::Server::Syslog: 0
+  Sys::Hostname::Long: 0
+  Task::Weaken: 0
+  Try::Tiny: 0
+  namespace::autoclean: 0
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: git://github.com/suretec/Message-Passing-Syslog.git
+version: 0.001_01
+x_authority: GHENRY
