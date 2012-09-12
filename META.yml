@@ -27,10 +27,11 @@ requires:
   Moo: 0
   Sys::Hostname::Long: 0
   Task::Weaken: 0
+  Time::ParseDate: 0
   Try::Tiny: 0
   namespace::clean: 0
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/suretec/Message-Passing-Syslog.git
-version: 0.004
+version: 0.005
 x_authority: GHENRY
