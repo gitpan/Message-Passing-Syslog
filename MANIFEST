@@ -1,4 +1,5 @@
 .gitignore
+.travis.yml
 Changes
 inc/Module/Install.pm
 inc/Module/Install/Authority.pm
@@ -20,4 +21,5 @@ MANIFEST.SKIP
 META.yml
 README
 t/00_compile.t
+t/client.t
 t/server.t
