@@ -3,7 +3,7 @@ use Moo;
 use MRO::Compat;
 use Time::ParseDate;
 use Sys::Hostname::Long qw/ hostname_long /;
-use Socket qw( getnameinfo );
+use Socket qw( getnameinfo NI_NUMERICHOST  NI_NUMERICSERV );
 use namespace::clean -except => 'meta';
 
 my $our_hostname = hostname_long();
@@ -90,8 +90,9 @@ sub _send_data {
         my $severity = int($1%8);
         my $log_hostname = $our_hostname;
         if ( $self->remote_hostname ) {
-            my ($err, $hostname, $servicename) = getnameinfo($from);
-            $log_hostname = $hostname;
+            my ( $err, $hostname, $servicename ) = getnameinfo( $from, NI_NUMERICHOST,  NI_NUMERICSERV );
+            $log_hostname = $hostname
+                unless $err;
         }
         $self->output_to->consume({
             epochtime     => $time || time(),
@@ -117,9 +118,23 @@ Message::Passing::Input::Syslog - input messages from Syslog.
 
 =head1 DESCRIPTION
 
-Provides a syslogd server for either TCP or UDP syslog.
+Provides a syslog server for UDP syslog.
 
 Can be used to ship syslog logs into a L<Message::Passing> system.
+
+The message is a hashref:
+
+    {
+        epochtime     => 1366803118,
+        facility_code => 19,
+        facility      => 'error',
+        severity_code => 3,
+        severity      => 'local3',
+        message       => 'the received syslog message',
+
+        # depending on the remote_hostname attribute
+        hostname      => 'syslog.company.tld' || '192.0.2.29',
+    }
 
 =head1 ATTRIBUTES
 
@@ -141,8 +156,8 @@ The protocol to listen on, currently only UDP is supported.
 
 =head2 remote_hostname
 
-Set to true to store the remote instead of the servers' hostname in the
-hostname attribute.
+Set to true to store the remote ip address instead of the servers' hostname
+in the hostname attribute.
 Defaults to false for backward compatibility.
 
 =head1 SEE ALSO
