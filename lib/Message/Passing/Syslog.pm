@@ -2,7 +2,7 @@ package Message::Passing::Syslog;
 use strict;
 use warnings;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 $VERSION = eval $VERSION;
 
 1;
@@ -13,9 +13,9 @@ Message::Passing::Syslog - input and output messages from/to Syslog.
 
 =head1 SYNOPSIS
 
-    message-pass --output STDOUT --input Syslog --input_options '{"port":"5140"}'
+    message-pass --input Syslog --input_options '{"port":"5140"}' --output STDOUT
 
-    message-pass --input STDIN --output Syslog --output_options 'xxx'
+    message-pass --input STDIN --output Syslog --output_options '{"hostname":"127.0.0.1","port":"5140"}'
 
 =head1 DESCRIPTION
 
