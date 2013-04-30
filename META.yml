@@ -26,6 +26,7 @@ requires:
   Message::Passing: 0.104
   Moo: 0
   Parse::Syslog::Line: 1.2
+  Socket: 2.008
   Sys::Hostname::Long: 0
   Task::Weaken: 0
   Time::ParseDate: 0
@@ -34,5 +35,5 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/suretec/Message-Passing-Syslog.git
-version: 0.010
+version: 0.011
 x_authority: cpan:GHENRY
